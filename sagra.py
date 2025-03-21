@@ -52,25 +52,24 @@ authenticator = stauth.Authenticate(
 )
 
 # Container centralizado para o login
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.image("logo_sagra.png", use_container_width=True)
-    st.title("SAGRA")
-    st.caption("Sistema de Acompanhamento e Gerenciamento de Reabilitação de Atletas")
+st.image("logo_sagra.png", use_container_width=True)
+st.title("SAGRA")
+st.caption("Sistema de Acompanhamento e Gerenciamento de Reabilitação de Atletas")
 
 # Inicializa o status de autenticação
 try:
     name, authentication_status, username = authenticator.login("Login", "main")
 except Exception as e:
     st.error(f"Erro na autenticação: {str(e)}")
-    authentication_status = None
-    name = None
-    username = None
+    st.stop()
 
+# Verifica o status da autenticação
 if authentication_status == False:
     st.error('❌ Usuário ou senha incorretos')
+    st.stop()
 elif authentication_status == None:
     st.info('👋 Por favor, faça login para continuar')
+    st.stop()
 
 # Função de inicialização do banco de dados
 def init_database():
