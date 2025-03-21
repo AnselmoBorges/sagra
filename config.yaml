@@ -1,0 +1,10 @@
+credentials:
+  usernames:
+    admin:
+      email: admin@sagra.com
+      name: Administrador
+      password: $2b$12$qOMhXS8nxqHWOvhQpkWxCuqwQqPgfWm6VVKZPJDcg3DfNqT6Ry3Uy  # admin123
+cookie:
+  expiry_days: 30
+  key: sagra_cookie_key
+  name: sagra_cookie 
