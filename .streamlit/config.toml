@@ -9,16 +9,25 @@ font = "sans serif"
 maxUploadSize = 200
 enableXsrfProtection = true
 enableCORS = false
+maxMessageSize = 200
+enableWebsocketCompression = false
+fileWatcherType = "none"
 
 [browser]
 gatherUsageStats = false
+serverAddress = "localhost"
+serverPort = 8501
 
 [runner]
 fastReruns = true
 magicEnabled = false
 installTracer = false
 fixMatplotlib = true
+postScriptGC = true
+codeHasher = "md5"
+clearCache = false
 
 [client]
 showErrorDetails = false
-toolbarMode = "minimal" 
+toolbarMode = "minimal"
+caching = true 

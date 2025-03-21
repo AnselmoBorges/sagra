@@ -51,8 +51,26 @@ authenticator = stauth.Authenticate(
     config['cookie']['expiry_days']
 )
 
+# Container centralizado para o login
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image("logo_sagra.png", use_container_width=True)
+    st.title("SAGRA")
+    st.caption("Sistema de Acompanhamento e Gerenciamento de Reabilitação de Atletas")
+
 # Inicializa o status de autenticação
-name, authentication_status, username = authenticator.login('Login', 'main')
+try:
+    name, authentication_status, username = authenticator.login("Login", "main")
+except Exception as e:
+    st.error(f"Erro na autenticação: {str(e)}")
+    authentication_status = None
+    name = None
+    username = None
+
+if authentication_status == False:
+    st.error('❌ Usuário ou senha incorretos')
+elif authentication_status == None:
+    st.info('👋 Por favor, faça login para continuar')
 
 # Função de inicialização do banco de dados
 def init_database():
@@ -270,18 +288,6 @@ def init_database():
             # Se for outro erro, mostra o erro e para
             st.error(f"Erro ao conectar ao banco de dados: {str(e)}")
         st.stop()
-
-# Container centralizado para o login
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.image("logo_sagra.png", use_container_width=True)
-    st.title("SAGRA")
-    st.caption("Sistema de Acompanhamento e Gerenciamento de Reabilitação de Atletas")
-    
-    if authentication_status == False:
-        st.error('❌ Usuário ou senha incorretos')
-    elif authentication_status == None:
-        st.info('👋 Por favor, faça login para continuar')
 
 # Se autenticado, mostra o conteúdo principal
 if authentication_status:
