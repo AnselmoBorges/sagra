@@ -58,7 +58,7 @@ st.caption("Sistema de Acompanhamento e Gerenciamento de Reabilitação de Atlet
 
 # Inicializa o status de autenticação
 try:
-    name, authentication_status, username = authenticator.login("Login", "main")
+    name, authentication_status, username = authenticator.login('Login')
 except Exception as e:
     st.error(f"Erro na autenticação: {str(e)}")
     st.stop()
