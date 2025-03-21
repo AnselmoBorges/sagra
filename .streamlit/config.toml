@@ -18,16 +18,6 @@ gatherUsageStats = false
 serverAddress = "localhost"
 serverPort = 8501
 
-[runner]
-fastReruns = true
-magicEnabled = false
-installTracer = false
-fixMatplotlib = true
-postScriptGC = true
-codeHasher = "md5"
-clearCache = false
-
 [client]
 showErrorDetails = false
-toolbarMode = "minimal"
-caching = true 
+toolbarMode = "minimal" 

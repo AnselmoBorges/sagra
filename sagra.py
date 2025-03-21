@@ -60,7 +60,7 @@ with col2:
 
 # Inicializa o status de autenticação
 try:
-    name, authentication_status, username = authenticator.login("Login", "main")
+    name, authentication_status, username = authenticator.login("Login", location="main")
 except Exception as e:
     st.error(f"Erro na autenticação: {str(e)}")
     authentication_status = None
