@@ -44,17 +44,25 @@ with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
 # Define as variáveis de autenticação
-names = ["Administrador"]
-usernames = ["admin"]
-# Gera o hash da senha admin123
-hashed = bcrypt.hashpw('admin123'.encode(), bcrypt.gensalt())
-passwords = [hashed.decode()]
+credentials = {
+    "usernames": {
+        "admin": {
+            "name": "Administrador",
+            "password": bcrypt.hashpw('admin123'.encode(), bcrypt.gensalt()).decode()
+        }
+    }
+}
 
 # Cria o autenticador
-authenticator = stauth.Authenticate(names, usernames, passwords, 'sagra_cookie', 'sagra_cookie_key', cookie_expiry_days=30)
+authenticator = stauth.Authenticate(
+    credentials,
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days']
+)
 
 # Inicializa o status de autenticação
-name, authentication_status, username = authenticator.login('', 'main')
+name, authentication_status, username = authenticator.login('Login', 'main')
 
 # Função de inicialização do banco de dados
 def init_database():
