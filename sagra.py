@@ -43,19 +43,9 @@ def extrair_dias(periodo):
 with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
-# Define as variáveis de autenticação
-credentials = {
-    "usernames": {
-        "admin": {
-            "name": "Administrador",
-            "password": bcrypt.hashpw('admin123'.encode(), bcrypt.gensalt()).decode()
-        }
-    }
-}
-
 # Cria o autenticador
 authenticator = stauth.Authenticate(
-    credentials,
+    config['credentials'],
     config['cookie']['name'],
     config['cookie']['key'],
     config['cookie']['expiry_days']

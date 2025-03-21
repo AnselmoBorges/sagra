@@ -1,12 +1,24 @@
 [theme]
-primaryColor = "#4285f4"
-backgroundColor = "#ffffff"
-secondaryBackgroundColor = "#f0f2f6"
+primaryColor = "#F63366"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F2F6"
 textColor = "#262730"
 font = "sans serif"
 
 [server]
+maxUploadSize = 200
 enableXsrfProtection = true
+enableCORS = false
 
 [browser]
-gatherUsageStats = false 
+gatherUsageStats = false
+
+[runner]
+fastReruns = true
+magicEnabled = false
+installTracer = false
+fixMatplotlib = true
+
+[client]
+showErrorDetails = false
+toolbarMode = "minimal" 
