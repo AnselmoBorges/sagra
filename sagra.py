@@ -52,9 +52,11 @@ authenticator = stauth.Authenticate(
 )
 
 # Container centralizado para o login
-st.image("logo_sagra.png", use_container_width=True)
-st.title("SAGRA")
-st.caption("Sistema de Acompanhamento e Gerenciamento de Reabilitação de Atletas")
+col1, col2, col3 = st.columns([1, 1, 1])
+with col2:
+    st.image("logo_sagra.png", width=200)
+    st.title("SAGRA")
+    st.caption("Sistema de Acompanhamento e Gerenciamento de Reabilitação de Atletas")
 
 # Inicializa o status de autenticação
 try:
